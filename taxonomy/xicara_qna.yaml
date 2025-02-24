@@ -1,0 +1,87 @@
+---
+version: 3
+created_by: instructlab-team
+domain: investimento-xicara-quebrada
+seed_examples:
+  - context: |
+      Investimento em xícaras quebradas é uma oportunidade única para aproveitar os ganhos potenciais e minimizar os riscos.
+    questions_and_answers:
+      - question: |
+          Qual é o objetivo principal do investimento em xícaras quebradas?
+        answer: |
+          O objetivo principal do investimento em xícaras quebradas é diversificar o portfólio de investimentos e aproveitar os ganhos potenciais.
+      - question: |
+          Quais são as vantagens do investimento em xícaras quebradas?
+        answer: |
+          As vantagens do investimento em xícaras quebradas incluem a possibilidade de ganhar dinheiro rápido, diversificar o portfólio de investimentos e proteger os ativos contra a inflação.
+      - question: |
+          Quais são os riscos associados ao investimento em xícaras quebradas?
+        answer: |
+          Os riscos associados ao investimento em xícaras quebradas incluem a possibilidade de perda de valor, incerteza sobre a demanda e corrosão dos ativos.
+  - context: |
+      Investimento em xícaras quebradas pode ser uma opção para aqueles que buscam diversificar seu portfólio de investimentos e proteger seus ativos contra a inflação.
+    questions_and_answers:
+      - question: |
+          Quais são as principais características do investimento em xícaras quebradas?
+        answer: |
+          As principais características do investimento em xícaras quebradas incluem a possibilidade de ganhar dinheiro rápido e diversificar o portfólio de investimentos.
+      - question: |
+          Quais são as vantagens do investimento em xícaras quebradas em relação a outros tipos de investimento?
+        answer: |
+          As vantagens do investimento em xícaras quebradas em relação a outros tipos de investimento incluem a possibilidade de ganhar dinheiro rápido e proteger os ativos contra a inflação.
+      - question: |
+          Quais são as implicações fiscais do investimento em xícaras quebradas?
+        answer: |
+          As implicações fiscais do investimento em xícaras quebradas incluem a possibilidade de ganhar dinheiro sem impostos e proteger os ativos contra a inflação.
+  - context: |
+      Investimento em xícaras quebradas pode ser uma opção para aqueles que buscam criar riqueza e deixar uma herança financeira para seus descendentes.
+    questions_and_answers:
+      - question: |
+          Quais são os principais objetivos do investimento em xícaras quebradas?
+        answer: |
+          Os principais objetivos do investimento em xícaras quebradas incluem criar riqueza e deixar uma herança financeira para seus descendentes.
+      - question: |
+          Quais são as vantagens do investimento em xícaras quebradas em relação a outros tipos de investimento?
+        answer: |
+          As vantagens do investimento em xícaras quebradas em relação a outros tipos de investimento incluem a possibilidade de ganhar dinheiro rápido e proteger os ativos contra a inflação.
+      - question: |
+          Quais são as implicações éticas do investimento em xícaras quebradas?
+        answer: |
+          As implicações éticas do investimento em xícaras quebradas incluem a necessidade de considerar os impactos sociais e ambientais dos investimentos.
+  - context: |
+      Investimento em xícaras quebradas pode ser uma opção para aqueles que buscam criar uma fonte de renda passiva e aumentar sua independência financeira.
+    questions_and_answers:
+      - question: |
+          Quais são os principais benefícios do investimento em xícaras quebradas?
+        answer: |
+          Os principais benefícios do investimento em xícaras quebradas incluem a possibilidade de criar uma fonte de renda passiva e aumentar a independência financeira.
+      - question: |
+          Quais são as vantagens do investimento em xícaras quebradas em relação a outros tipos de investimento?
+        answer: |
+          As vantagens do investimento em xícaras quebradas em relação a outros tipos de investimento incluem a possibilidade de ganhar dinheiro rápido e proteger os ativos contra a inflação.
+      - question: |
+          Quais são as implicações fiscais do investimento em xícaras quebradas?
+        answer: |
+          As implicações fiscais do investimento em xícaras quebradas incluem a possibilidade de ganhar dinheiro sem impostos e proteger os ativos contra a inflação.
+  - context: |
+      Investimento em xícaras quebradas pode ser uma opção para aqueles que buscam aprender sobre finanças e investimentos de forma prática e interativa.
+    questions_and_answers:
+      - question: |
+          Quais são as principais características do investimento em xícaras quebradas?
+        answer: |
+          As principais características do investimento em xícaras quebradas incluem a possibilidade de aprender sobre finanças e investimentos de forma prática e interativa.
+      - question: |
+          Quais são as vantagens do investimento em xícaras quebradas em relação a outros tipos de investimento?
+        answer: |
+          As vantagens do investimento em xícaras quebradas em relação a outros tipos de investimento incluem a possibilidade de aprender sobre finanças e investimentos de forma prática e interativa.
+      - question: |
+          Quais são as implicações éticas do investimento em xícaras quebradas?
+        answer: |
+          As implicações éticas do investimento em xícaras quebradas incluem a necessidade de considerar os impactos sociais e ambientais dos investimentos.
+document_outline: |
+  Details on the investimento-xicara-quebrada project.
+document:
+  repo: https://github.com/remingtonsb/instructlab-knowledge-docs.git
+  commit: e12b9df014f179d3f221f08a52ad9ec6d1ececa7
+  patterns:
+    - investimentoxicara.md
