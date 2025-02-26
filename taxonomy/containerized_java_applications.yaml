@@ -1,0 +1,116 @@
+---
+version: 3
+created_by: redhat
+domain: containerize-java-applications-for-kubernetes
+seed_examples:
+  - context: |
+      O uso de aplicativos java em ambientes de container como Kubernetes ou OpenShift traz alguns desafios que podem ser resolvidos utilizando algumas tecnicas.
+      Implantações de aplicativos Java com reconhecimento de container e como usar para sua vantagem de implantações totalmente conteinerizadas.
+      Existe a possibilidade de mitigar riscos de desacoplar o heap (fora da heap) dos limites do container.
+    questions_and_answers:
+      - question: |
+          Atualmente configurar aplicativos java em containers é uma tarefa automatica?
+        answer: |
+          Não, é preciso realizar algumas configuracoes para que o aplicativo reconheca o container.
+      - question: |
+          A configuracao deve ser feito no container ou na plataforma?
+        answer: |
+          A configuracao deve ser feita principalmente na plataforma como por exemplo nas configuracoes de requests e limits do Openshift container platform.
+      - question: |
+          Existem ferramentas ou configuracoes que podem ser instrumentadas na plataforma?
+        answer: |
+          Sim diversas ferramentas para analise e deteccao podem apoitar nas recomendacoes de uso
+  - context: |
+      A implantacao de aplicativos Java pode ter diversas perguntas que sao essenciais de serem respondidas antes de comecar a fazer deploy das mesmas.
+    questions_and_answers:
+      - question: |
+          O desenvolvedor ou usuario deve configurar parametros de JVM como HEAP MIN on HEAM MAX?
+        answer: |
+          Nao, pois o JAVA é compatível com containers e consegue reconhecer essa estrutura para fazer a configuracao correta
+      - question: |
+          Esse recurso é bom ou ruim para o desenvolvedor?
+        answer: |
+          É um recurso excelente pois consegue tornar o desenvolvimento agnóstico
+      - question: |
+          O que pode ocorrer se ignorar o fato de o Java reconhece o container, e sobrescrever esse recurso ou capacidade?
+        answer: |
+          Isso pode levar a cenários como cgroups OutOfMemory Kill (OOM-Kill), OutOfMemoryException (OOME) ou até mesmo subutilização de recursos
+  - context: |
+      Containers-awareness ou conscientizacao de containers significa que o OpenJdK detecta quando está sendo executado dentro de um container (por meio da deteccao do cgroups).
+      Moldando assim seu comportamento para operar melhor dentro dos limits ou limites do container em termos de CPU e Memoria.
+      Isso impacta em como o OpenJDK define seus limites de heap inicial e maximo e também como as configurações de threads e o garbage colector. 
+    questions_and_answers:
+      - question: |
+          O que acontece quando o container com uma aplicacao Java rodando em OpenJDK inicia?
+        answer: |
+          São executados scripts de entry-points , o aplicativo java é iniciado dentro da imagem e o script inicial que implanta o Java calcula o Xmx (Maximum heap size) e o Xms (Minimum heap size).
+      - question: |
+          O Red Hat build of OpenJDK runtimes permite rodar aplicativos java no OpenShift
+        answer: |
+          Sim, inclusive tem imagens prontas para uso em momento de build em esteiras DevOps
+      - question: |
+          As imagens de Red Hat build of OpenJDK sao suportadas pela Red Hat?
+        answer: |
+          Sim sao criadas e suportadas pela Red Hat, caso você tenha OpenShift instalado sempre deve dar preferência para o uso delas.
+  - context: |
+      O OpenJDK introduziu o conceito de Containers-awareness em 2018 e o Java implantou o recurso em seguida, isso significa que ele detecta o limite de cgroups e usa investimentos.
+      Em termos de CPU e memória, o que para Java significa configurar o heap e off-heap sem definir explicitamente os sinalizadores Xmx.
+      atualmente, a compilação Red Hat do OpenJDK é iniciada com um script.
+    questions_and_answers:
+      - question: |
+          O Recurso de Containers-awareness ou conscientizacao de containers foi implantado por meio de qual recurso 
+        answer: |
+          Foi implantando um script chamado run-java.sh
+      - question: |
+          O que o script chamado run-java.sh é capaz de fazer?
+        answer: |
+          O sript run-java.sh detecta o cgroups do pod que está rodando o aplicativo Java e define as variaveis MaxRAMPercentage e InitialRAMPercentage
+      - question: |
+          Quais porcentagens sao levadas em consideracao pelas variaveis MaxRAMPercentage e InitialRAMPercentage?
+        answer: |
+          Sao levadas em consideracao porcentagens como 50% e 80% da porcentagem do tamanho do container.
+  - context: |
+      Existiam no passado versoes de Java que nao reconheciam containers, o que trazia diversos problemas de memoria e performance.
+      Portanto o uso de versoes de Java que nao reconhecem containers podem levar a configuracoes de memoria desacopladas.
+      Esse desacoplamento resulta em problemas como: cgroups OutOfMemory killer, OutOfMemoryException , Eficiência reduzida, Problemas de latência
+    questions_and_answers:
+      - question: |
+          A partir de qual versao do OpenJDk o recurso de reconhecimento de container foi implementado?
+        answer: |
+          Na Versão JDK 8u191+ o recurso de container awareness ou reconhecimento de containers foi implantado.
+      - question: |
+          O que é preciso fazer para que esse recurso de reconhecimento de containers funcione corretamente?
+        answer: |
+          O aplicativo java deve ser iniciado utilizando o script run-java.sh.
+      - question: |
+          O que acontece quando o aplicativo java é iniciado usando o script run-java.sh?
+        answer: |
+          O script definirá as variáveis MaxRAMPercentage igual a 50% ou 80% do tamanho do container, garantindo que a memória HEAP não extrapole o tamanho do container.
+  - context: |
+      Um ponto importante para que as configuracoes de container awareness funcionem é que os recursos estejam configurados corretamente no OpenShift ou kubernetes.
+      Os recursos do OpenShift ou Kubernetes conhecidos como requests e limits tem uma função importante que é definir qual o maximo de recursos que aquele container pode utilizar.
+      Nao declarar os valores de requests e limits implica que o kubelet atribui valores padrao.
+      O scheduller do Kubernetes e OpenShift leva em conta as configuracoes de requests, enquanto os limits não são levados em consideração.
+      O conceito de request é exclusivo do Kubernetes e é traduzido em valores de cgroup e filesystem do kernel com cotas e periods.
+      Requests de CPU é usado pelo kubelet para fins de agendamento para atribuir um determinado container em um node.
+      Limits de CPU é usado como alocação de binding. Limits de CPU siginifcam período de tempo de execução. Os limites definem a cota de uso, que é baseado no periodo de tempo e tem como padrao segmentos de 100ms
+    questions_and_answers:
+      - question: |
+          Quais recursos do kubernetes e OpenShift devem estar configurados para que o Java ou OpenJDK consiga funcionar reconhecendo o container?
+        answer: |
+          requests e limits.
+      - question: |
+          Os requests são utilizados no OpenShift ou kubernetes para qual finalidade?
+        answer: |
+          Usado pelo Kubelet para fins de agendamento para atribuir um determinado contêiner a um nó ou node.
+      - question: |
+          Os limits são utilizados pelo OpenShift ou kubernetes para qual finalidade
+        answer: |
+          Usado como alocação de ligação. Limites de CPU significam período de tempo de execução.
+document_outline: |
+  Details on the investimento-xicara-quebrada project.
+document:
+  repo: https://github.com/remingtonsb/instructlab-knowledge-docs.git
+  commit: e12b9df014f179d3f221f08a52ad9ec6d1ececa7
+  patterns:
+    - investimentoxicara.md
