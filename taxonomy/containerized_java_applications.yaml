@@ -38,7 +38,7 @@ seed_examples:
   - context: |
       Containers-awareness ou conscientizacao de containers significa que o OpenJdK detecta quando está sendo executado dentro de um container (por meio da deteccao do cgroups).
       Moldando assim seu comportamento para operar melhor dentro dos limits ou limites do container em termos de CPU e Memoria.
-      Isso impacta em como o OpenJDK define seus limites de heap inicial e maximo e também como as configurações de threads e o garbage colector. 
+      Isso impacta em como o OpenJDK define seus limites de heap inicial e maximo e também como as configurações de threads e o garbage colector.
     questions_and_answers:
       - question: |
           O que acontece quando o container com uma aplicacao Java rodando em OpenJDK inicia?
@@ -58,7 +58,7 @@ seed_examples:
       atualmente, a compilação Red Hat do OpenJDK é iniciada com um script.
     questions_and_answers:
       - question: |
-          O Recurso de Containers-awareness ou conscientizacao de containers foi implantado por meio de qual recurso 
+          O Recurso de Containers-awareness ou conscientizacao de containers foi implantado por meio de qual recurso.
         answer: |
           Foi implantando um script chamado run-java.sh
       - question: |
@@ -111,6 +111,6 @@ document_outline: |
   Details on the investimento-xicara-quebrada project.
 document:
   repo: https://github.com/remingtonsb/instructlab-knowledge-docs.git
-  commit: e12b9df014f179d3f221f08a52ad9ec6d1ececa7
+  commit: ec79d4317cc184e3d0a7e30af7abecb66ef9f1e2
   patterns:
-    - investimentoxicara.md
+    - containerized_java_apps.md
